@@ -244,6 +244,10 @@ where
         }
     }
 
+    pub fn get_all_layers(&self) -> (Vec<NeighborNodes<M0>>, Vec<Vec<Node<M>>>) {
+        (self.zero.clone(), self.layers.clone())
+    }
+
     pub fn layers(&self) -> usize {
         self.layers.len() + 1
     }

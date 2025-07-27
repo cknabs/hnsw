@@ -1,7 +1,7 @@
 #![no_std]
 extern crate alloc;
 
-mod hnsw;
+pub mod hnsw;
 
 pub use self::hnsw::*;
 
