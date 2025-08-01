@@ -49,9 +49,9 @@ impl Default for Params {
 /// Contains all the state used when searching the HNSW
 #[derive(Clone, Debug)]
 pub struct Searcher<Metric> {
-    candidates: Vec<Neighbor<Metric>>,
-    nearest: Vec<Neighbor<Metric>>,
-    seen: HashSet<usize, RandomState>,
+    pub candidates: Vec<Neighbor<Metric>>,
+    pub nearest: Vec<Neighbor<Metric>>,
+    pub seen: HashSet<usize, RandomState>,
 }
 
 impl<Metric> Searcher<Metric> {
@@ -59,7 +59,7 @@ impl<Metric> Searcher<Metric> {
         Default::default()
     }
 
-    fn clear(&mut self) {
+    pub fn clear(&mut self) {
         self.candidates.clear();
         self.nearest.clear();
         self.seen.clear();

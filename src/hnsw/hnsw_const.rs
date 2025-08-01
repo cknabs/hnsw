@@ -22,19 +22,19 @@ use space::{Knn, KnnPoints, Metric, Neighbor};
 )]
 pub struct Hnsw<Met, T, R, const M: usize, const M0: usize> {
     /// Contains the space metric.
-    metric: Met,
+    pub metric: Met,
     /// Contains the zero layer.
-    zero: Vec<NeighborNodes<M0>>,
+    pub zero: Vec<NeighborNodes<M0>>,
     /// Contains the features of the zero layer.
     /// These are stored separately to allow SIMD speedup in the future by
     /// grouping small worlds of features together.
-    features: Vec<T>,
+    pub features: Vec<T>,
     /// Contains each non-zero layer.
-    layers: Vec<Vec<Node<M>>>,
+    pub layers: Vec<Vec<Node<M>>>,
     /// This needs to create resonably random outputs to determine the levels of insertions.
     prng: R,
     /// The parameters for the HNSW.
-    params: Params,
+    pub params: Params,
 }
 
 impl<Met, T, R, const M: usize, const M0: usize> Hnsw<Met, T, R, M, M0>
@@ -412,7 +412,7 @@ where
     }
 
     /// Gets the entry point's feature.
-    fn entry_feature(&self) -> &T {
+    pub fn entry_feature(&self) -> &T {
         if let Some(last_layer) = self.layers.last() {
             &self.features[last_layer[0].zero_node as usize]
         } else {
